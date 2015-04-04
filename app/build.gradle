@@ -21,12 +21,18 @@ android {
     buildToolsVersion "22.0.0"
 
     defaultConfig {
+        // during development, change minSdkVersion to 21
+        // for much faster compilation
+        // compiling and running tests on genymotion is about 3 times faster for me
+        // in this project with 75k methods and 3 simple tests
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidSpockRunner"
+
+        multiDexEnabled = true
     }
     buildTypes {
         release {
@@ -40,9 +46,13 @@ android {
     lintOptions {
         abortOnError false
     }
+    dexOptions {
+        javaMaxHeapSize '2g'
+    }
 }
 
 dependencies {
+    compile 'com.android.support:multidex:1.0.1'
     compile 'org.codehaus.groovy:groovy:2.4.1:grooid'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
     androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.0'
@@ -50,4 +60,8 @@ dependencies {
         exclude group: 'org.codehaus.groovy'
         exclude group: 'org.hamcrest'
     }
+    // unused, just to hit 65k methods limit
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.google.android.gms:play-services:7.0.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.0.1'
 }

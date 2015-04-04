@@ -1,12 +1,9 @@
 package com.ordonteam;
 
 import android.app.Activity;
-import android.os.Bundle
-import groovy.transform.CompileStatic;
+import android.os.Bundle;
 
-@CompileStatic
-final class MainActivity extends Activity {
-
+public final class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

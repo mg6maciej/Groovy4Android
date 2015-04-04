@@ -3,10 +3,6 @@ buildscript {
         jcenter()
         maven { url 'http://download.crashlytics.com/maven' }
     }
-
-    dependencies {
-        classpath 'org.codehaus.groovy:gradle-groovy-android-plugin:0.3.5'
-    }
 }
 
 repositories {
@@ -14,7 +10,6 @@ repositories {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'groovyx.grooid.groovy-android'
 
 android {
     compileSdkVersion 22
@@ -53,13 +48,8 @@ android {
 
 dependencies {
     compile 'com.android.support:multidex:1.0.1'
-    compile 'org.codehaus.groovy:groovy:2.4.1:grooid'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
     androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.0'
-    androidTestCompile('org.spockframework:spock-core:0.7-groovy-2.0') {
-        exclude group: 'org.codehaus.groovy'
-        exclude group: 'org.hamcrest'
-    }
     // unused, just to hit 65k methods limit
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile 'com.google.android.gms:play-services:7.0.0'
